@@ -1,3 +1,19 @@
 .App {
   text-align: center;
 }
+
+.app-header {
+  background-color: #8ECAE6;
+  color: #023047;
+}
+
+.app-sider {
+  background-color: #219EBC;
+  color: #023047;
+  font-weight: bold;
+}
+
+.app-content {
+  background-color: white;
+  color: #023047;
+}
