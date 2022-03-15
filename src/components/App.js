@@ -3,6 +3,7 @@ import * as todosCreator from '../redux/actionsCreators/todosCreators';
 import { Layout } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import TodosTable from './TodosTable';
 const { Header, Sider, Content } = Layout;
 
 
@@ -23,11 +24,7 @@ function App() {
         <Layout>
           <Sider className="app-sider">Sider</Sider>
           <Content className="app-content">
-            <ul>
-              {todosState.map((item) =>
-                <li key={item.id}> {item.task} -- {item.assignedTo}</li>)
-              }
-            </ul>
+            <TodosTable/>
           </Content>
         </Layout>
       </Layout>
