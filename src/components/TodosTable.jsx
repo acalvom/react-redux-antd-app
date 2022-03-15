@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as todosCreator from "../redux/actionsCreators/todosCreators";
-import { Table, Tag, Space, Checkbox, Button } from "antd";
+import { Table, Tag, Checkbox, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 const TodosTable = () => {
@@ -40,16 +40,12 @@ const TodosTable = () => {
       title: "Done",
       dataIndex: "isDone",
       key: "isDone",
-      render: () => <Checkbox></Checkbox>,
+      render: (isDone) => <Checkbox defaultChecked={isDone}></Checkbox>,
     },
     {
       title: "Action",
       key: "action",
-      render: () => (
-        <Space size="middle">
-          <Button type="danger" shape="circle" icon={<DeleteOutlined />} />
-        </Space>
-      ),
+      render: () => <Button type="danger" shape="circle" icon={<DeleteOutlined />} />,
     },
   ];
 
