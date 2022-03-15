@@ -1,8 +1,18 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import * as todosCreator from "../redux/actionsCreators/todosCreators";
 import { Table, Tag, Space, Checkbox, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-const TodosList = () => {
+const TodosTable = () => {
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(todosCreator.listTodos());
+  }, [dispatch]);
+
   const columns = [
     {
       title: "Task",
@@ -19,13 +29,8 @@ const TodosList = () => {
       dataIndex: "priority",
       key: "priority",
       render: (priority) => {
-        let color;
-        if (priority === "high") {
-          color = "volcano";
-        } else if (priority === "medium") color = "orange";
-        else color = "green";
         return (
-          <Tag color={color} key={priority}>
+          <Tag color={priority === "high" ? "red" : priority === "medium" ? "orange" : "green"} key={priority}>
             {priority.toUpperCase()}
           </Tag>
         );
@@ -48,18 +53,11 @@ const TodosList = () => {
     },
   ];
 
-  const todosListMock = [
-    { id: 1, task: "Clean bathroom", assignedTo: "Andrea", priority: "medium", isDone: false },
-    { id: 2, task: "Buy tomatoes", assignedTo: "Andrea", priority: "high", isDone: true },
-    { id: 3, task: "Get the hair cut", assignedTo: "Paula", priority: "low", isDone: false },
-    { id: 4, task: "Visit dentist", assignedTo: "Carlos", priority: "high", isDone: false },
-  ];
-
   return (
     <div>
-      <Table columns={columns} dataSource={todosListMock} rowKey="id" />
+      <Table columns={columns} dataSource={todos} rowKey="id" />
     </div>
   );
 };
 
-export default TodosList;
+export default TodosTable;
