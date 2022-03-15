@@ -3,17 +3,22 @@
 }
 
 .app-header {
-  background-color: #8ECAE6;
+  background-color: #a8e8f9;
   color: #023047;
 }
 
 .app-sider {
-  background-color: #219EBC;
-  color: #023047;
+  background-color: #023E8A;
+  color: white;
   font-weight: bold;
 }
 
 .app-content {
   background-color: white;
   color: #023047;
+}
+
+.add-todo-button {
+  color: #0077B6;
+  border-color: #0077B6;
 }
