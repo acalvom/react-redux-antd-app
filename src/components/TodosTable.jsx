@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Tag, Space } from "antd";
+import { Table, Tag, Space, Checkbox, Button } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const TodosList = () => {
   const columns = [
@@ -34,13 +35,14 @@ const TodosList = () => {
       title: "Done",
       dataIndex: "isDone",
       key: "isDone",
+      render: () => <Checkbox></Checkbox>,
     },
     {
       title: "Action",
       key: "action",
       render: () => (
         <Space size="middle">
-          <a>Delete</a>
+          <Button type="danger" shape="circle" icon={<DeleteOutlined />} />
         </Space>
       ),
     },
