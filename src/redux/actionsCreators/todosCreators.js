@@ -1,15 +1,12 @@
-const todosListMock = [
-    { id: 1, task: 'Clean bathroom', assignedTo: 'Andrea', priority: 'medium', isDone: false },
-    { id: 2, task: 'Buy tomatoes', assignedTo: 'Andrea', priority: 'high', isDone: true },
-    { id: 3, task: 'Get the hair cut', assignedTo: 'Paula', priority: 'low', isDone: false },
-    { id: 4, task: 'Visit dentist', assignedTo: 'Carlos', priority: 'high', isDone: false }
-]
+import axios from 'axios';
 
 export const listTodos = () => {
-    return dispatch => {
+    return async (dispatch) => {
+        const res = await axios.get("http://localhost:3001/todos");
+        const todosList = res.data;
         dispatch({
             type: '@todos/list',
-            payload: todosListMock
+            payload: todosList
         });
     }
 }
