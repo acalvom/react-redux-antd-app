@@ -4,13 +4,13 @@
 
 .app-header {
   background-color: #a8e8f9;
-  color: #023E8A;
+  color: #023e8a;
   font-size: 2em;
   font-weight: bold;
 }
 
 .app-sider {
-  background-color: #023E8A;
+  background-color: #023e8a;
   color: white;
   font-weight: bold;
 }
@@ -20,9 +20,19 @@
   color: #023047;
 }
 
+.app-footer {
+  background-color: #fde9c3;
+  color: #fb8500;
+  font-weight: bold;
+}
+
+.app-footer a {
+  color: #023e8a;
+}
+
 .add-todo-button {
-  color: #0077B6;
-  border-color: #0077B6;
+  color: #0077b6;
+  border-color: #0077b6;
 }
 
 .save-todo-button {

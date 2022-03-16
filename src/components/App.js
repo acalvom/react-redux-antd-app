@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import TodosTable from './AppContent/TodosTable';
 import TodosHeader from './AppContent/TodosHeader';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
             <TodosTable />
           </Content>
         </Layout>
+        <Footer className="app-footer">Created by <a href='https://github.com/acalvom'> acalvom</a> in 2022</Footer>
       </Layout>
     </div>
   );
