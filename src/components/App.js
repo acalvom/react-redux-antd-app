@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <Header className="app-header">Header</Header>
+        <Header className="app-header">REACT APP WITH REDUX</Header>
         <Layout>
           <Sider className="app-sider">Sider</Sider>
           <Content className="app-content">
