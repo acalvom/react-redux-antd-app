@@ -2,12 +2,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as todosCreator from "../../redux/actionsCreators/todosCreators";
-import { Table, Tag, Checkbox, Button, Empty } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Table, Checkbox, Empty } from "antd";
+import TodoTableTag from "./TodoTableTag";
+import TodosTableButton from "./TodosTableButton";
 
 const TodosTable = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+
+  const handleDeleteTodo = (id) => {
+    dispatch(todosCreator.removeTodo(id));
+  };
 
   const columns = [
     {
@@ -24,11 +29,7 @@ const TodosTable = () => {
       title: "Priority",
       dataIndex: "priority",
       key: "priority",
-      render: (priority) => (
-        <Tag color={priority === "high" ? "red" : priority === "medium" ? "orange" : "green"} key={priority}>
-          {priority.toUpperCase()}
-        </Tag>
-      ),
+      render: (priority) => <TodoTableTag priority={priority} />,
     },
     {
       title: "Done",
@@ -38,20 +39,24 @@ const TodosTable = () => {
     },
     {
       title: "Action",
+      dataIndex: "id",
       key: "action",
-      render: () => <Button type="danger" shape="circle" icon={<DeleteOutlined />} />,
+      render: (id) => <TodosTableButton id={id} handleDeleteTodo={handleDeleteTodo} />,
     },
   ];
+
+  const paginationSettings = {
+    position: ["bottomCenter"],
+    defaultPageSize: 5,
+    showSizeChanger: true,
+    pageSizeOptions: ["10", "15"],
+  };
 
   useEffect(() => {
     dispatch(todosCreator.listTodos());
   }, [dispatch]);
 
-  return (
-    todos.length > 0 
-    ?<Table columns={columns} dataSource={todos} rowKey="id" pagination={{ position: ["bottomCenter"], defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ["10", "15"] }} />
-    :<Empty />
-  )
+  return todos.length > 0 ? <Table columns={columns} dataSource={todos} rowKey="id" pagination={paginationSettings} /> : <Empty />;
 };
 
 export default TodosTable;

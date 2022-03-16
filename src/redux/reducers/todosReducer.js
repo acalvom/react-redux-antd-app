@@ -6,6 +6,9 @@ const todosReducer = (state = [], action) => {
         case '@todos/add':
             return [...state, action.payload];
 
+        case '@todos/delete':
+            return [...state.filter(item => item.id !== action.payload)];
+
         default:
             return state;
     }
