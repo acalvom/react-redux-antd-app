@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as todosCreator from "../../redux/actionsCreators/todosCreators";
-import { Table, Tag, Checkbox, Button } from "antd";
+import { Table, Tag, Checkbox, Button, Empty } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 const TodosTable = () => {
@@ -48,8 +48,10 @@ const TodosTable = () => {
   }, [dispatch]);
 
   return (
-      <Table columns={columns} dataSource={todos} rowKey="id" />
-  );
+    todos.length > 0 
+    ?<Table columns={columns} dataSource={todos} rowKey="id" pagination={{ position: ["bottomCenter"], defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ["10", "15"] }} />
+    :<Empty />
+  )
 };
 
 export default TodosTable;
