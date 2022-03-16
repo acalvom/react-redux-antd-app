@@ -49,7 +49,7 @@ const TodosTable = () => {
 
   return (
     todos.length > 0 
-    ?<Table columns={columns} dataSource={todos} rowKey="id" pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ["10", "15"] }} />
+    ?<Table columns={columns} dataSource={todos} rowKey="id" pagination={{ position: ["bottomCenter"], defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ["10", "15"] }} />
     :<Empty />
   )
 };
