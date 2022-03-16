@@ -27,7 +27,7 @@ const TodosHeader = () => {
         }
       />
       
-      <Modal title="Basic Modal" visible={isModalVisible} onCancel={handleCancel} footer={null}>
+      <Modal title="New Todo" visible={isModalVisible} onCancel={handleCancel} footer={null}>
         <AddTodoForm />
       </Modal>
     </Fragment>
