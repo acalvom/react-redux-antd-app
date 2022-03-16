@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as todosCreator from "../../redux/actionsCreators/todosCreators";
-import { Table, Checkbox, Button, Empty } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Table, Checkbox, Empty } from "antd";
 import TodoTableTag from "./TodoTableTag";
+import TodosTableButton from "./TodosTableButton";
 
 const TodosTable = () => {
   const todos = useSelector((state) => state.todos);
@@ -41,7 +41,7 @@ const TodosTable = () => {
       title: "Action",
       dataIndex: "id",
       key: "action",
-      render: (id) => <Button type="danger" shape="circle" icon={<DeleteOutlined />} onClick={() => handleDeleteTodo(id)} />,
+      render: (id) => <TodosTableButton id={id} handleDeleteTodo={handleDeleteTodo} />,
     },
   ];
 
