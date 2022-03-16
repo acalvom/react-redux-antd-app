@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { PageHeader, Button, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import AddTodoForm from "./AddTodo/AddTodoForm";
+import AddTodoForm from "./AddTodoForm";
 
 const TodosHeader = () => {
   const title = "LIST OF TODOS";

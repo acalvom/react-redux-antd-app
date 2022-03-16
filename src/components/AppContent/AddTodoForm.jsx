@@ -2,7 +2,7 @@ import React from "react";
 import { SyncOutlined, CheckOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Select } from "antd";
 import { useDispatch } from "react-redux";
-import * as todosCreator from "../../../redux/actionsCreators/todosCreators";
+import * as todosCreator from "../../redux/actionsCreators/todosCreators";
 const { Option } = Select;
 
 const AddTodoForm = () => {
