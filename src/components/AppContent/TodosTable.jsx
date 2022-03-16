@@ -47,9 +47,7 @@ const TodosTable = () => {
     dispatch(todosCreator.listTodos());
   }, [dispatch]);
 
-  return (
-      <Table columns={columns} dataSource={todos} rowKey="id" />
-  );
+  return <Table columns={columns} dataSource={todos} rowKey="id" pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ["10", "15"] }} />;
 };
 
 export default TodosTable;
