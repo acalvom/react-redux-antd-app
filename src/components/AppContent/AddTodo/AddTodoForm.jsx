@@ -1,18 +1,16 @@
 import React from "react";
 import { SyncOutlined, CheckOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Select } from "antd";
+import { useDispatch } from "react-redux";
+import * as todosCreator from "../../../redux/actionsCreators/todosCreators";
 const { Option } = Select;
 
 const AddTodoForm = () => {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  const onReset = () => {
-    form.resetFields();
-  };
+  const onFinish = (values) => dispatch(todosCreator.addTodo({ ...values, isDone: false }));
+  const onReset = () => form.resetFields();
 
   return (
     <Form form={form} name="addTodoForm" labelCol={{ span: 6 }} wrapperCol={{ span: 16 }} initialValues={{ remember: true }} onFinish={onFinish}>
