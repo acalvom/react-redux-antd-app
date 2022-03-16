@@ -1,6 +1,8 @@
 import './App.css';
 import { Layout } from 'antd';
-import TodosTable from './TodosTable';
+import TodosTable from './AppContent/TodosTable';
+import TodosHeader from './AppContent/TodosHeader';
+
 const { Header, Sider, Content } = Layout;
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
         <Layout>
           <Sider className="app-sider">Sider</Sider>
           <Content className="app-content">
+            <TodosHeader />
             <TodosTable />
           </Content>
         </Layout>
