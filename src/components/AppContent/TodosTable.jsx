@@ -14,6 +14,10 @@ const TodosTable = () => {
     dispatch(todosCreator.removeTodo(id));
   };
 
+  const handleUpdateStatus = (id, isDone) => {
+    dispatch(todosCreator.toogleState(id, !isDone));
+  };
+
   const columns = [
     {
       title: "Task",
@@ -35,7 +39,7 @@ const TodosTable = () => {
       title: "Done",
       dataIndex: "isDone",
       key: "isDone",
-      render: (isDone) => <Checkbox defaultChecked={isDone}></Checkbox>,
+      render: (isDone, row) => <Checkbox defaultChecked={isDone} onChange={() => handleUpdateStatus(row.id, isDone)}></Checkbox>,
     },
     {
       title: "Action",
