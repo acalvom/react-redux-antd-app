@@ -1,12 +1,15 @@
 import React from "react";
 import { Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import * as todosCreator from "../../redux/actionsCreators/todosCreators";
 
 const TodosTableButton = (props) => {
-  const id = props.id;
-  const handleDeleteTodo = props.handleDeleteTodo;
+  const dispatch = useDispatch(); 
 
-  return <Button type="danger" shape="circle" icon={<DeleteOutlined />} onClick={() => handleDeleteTodo(id)} />;
+  const handleDeleteTodo = () => dispatch(todosCreator.removeTodo(props.id));
+
+  return <Button type="danger" shape="circle" icon={<DeleteOutlined />} onClick={() => handleDeleteTodo()} />;
 };
 
 export default TodosTableButton;

@@ -1,4 +1,4 @@
-import { getTodos, postTodo, deleteTodo } from '../../services/todosAPI';
+import { getTodos, postTodo, deleteTodo, updateState } from '../../services/todosAPI';
 
 export const listTodos = () => {
 
@@ -29,6 +29,17 @@ export const removeTodo = (todoId) => {
         dispatch({
             type: '@todos/delete',
             payload: todoId
+        });
+    }
+}
+
+export const toogleState = (todoId, todoIsDone) => {
+
+    return async (dispatch) => {
+        const updatedTodo = await updateState(todoId, todoIsDone);
+        dispatch({
+            type: '@todos/update',
+            payload: updatedTodo
         });
     }
 }

@@ -28,3 +28,12 @@ export const deleteTodo = async (todoId) => {
         return error;
     }
 }
+
+export const updateState = async (todoId, todoIsDone) => {
+    try {
+        const res = await axios.patch(BASE_URL + todoId, {isDone: todoIsDone});
+        return res.data;
+    } catch (error) {
+        return error;
+    }
+}
