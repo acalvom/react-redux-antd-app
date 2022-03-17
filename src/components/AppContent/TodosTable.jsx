@@ -11,10 +11,6 @@ const TodosTable = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
-  const handleDeleteTodo = (id) => {
-    dispatch(todosCreator.removeTodo(id));
-  };
-
   const columns = [
     {
       title: "Task",
@@ -42,7 +38,7 @@ const TodosTable = () => {
       title: "Action",
       dataIndex: "id",
       key: "action",
-      render: (id) => <TodosTableButton id={id} handleDeleteTodo={handleDeleteTodo} />,
+      render: (id) => <TodosTableButton id={id} />,
     },
   ];
 
