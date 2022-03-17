@@ -2,9 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as todosCreator from "../../redux/actionsCreators/todosCreators";
-import { Table, Checkbox, Empty } from "antd";
+import { Table, Empty } from "antd";
 import TodoTableTag from "./TodoTableTag";
 import TodosTableButton from "./TodosTableButton";
+import TodosTableCheckbox from "./TodosTableCheckbox";
 
 const TodosTable = () => {
   const todos = useSelector((state) => state.todos);
@@ -12,10 +13,6 @@ const TodosTable = () => {
 
   const handleDeleteTodo = (id) => {
     dispatch(todosCreator.removeTodo(id));
-  };
-
-  const handleUpdateStatus = (id, isDone) => {
-    dispatch(todosCreator.toogleState(id, !isDone));
   };
 
   const columns = [
@@ -39,7 +36,7 @@ const TodosTable = () => {
       title: "Done",
       dataIndex: "isDone",
       key: "isDone",
-      render: (isDone, row) => <Checkbox defaultChecked={isDone} onChange={() => handleUpdateStatus(row.id, isDone)}></Checkbox>,
+      render: (isDone, row) => <TodosTableCheckbox isDone={isDone} id={row.id} />,
     },
     {
       title: "Action",
