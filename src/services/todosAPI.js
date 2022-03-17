@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:3001/todos/"
+const BASE_URL = "/todos/"
 
 export const getTodos = async () => {
     try {
