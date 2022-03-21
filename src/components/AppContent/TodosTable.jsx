@@ -8,7 +8,7 @@ import TodosTableButton from "./TodosTableButton";
 import TodosTableCheckbox from "./TodosTableCheckbox";
 
 const TodosTable = () => {
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todosState.todos);
   const dispatch = useDispatch();
 
   const columns = [
