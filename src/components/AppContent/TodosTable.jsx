@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as todosCreator from "../../redux/actionsCreators/todosCreators";
-import { Table, Empty } from "antd";
+import { Table, Empty, Spin } from "antd";
 import TodoTableTag from "./TodoTableTag";
 import TodosTableButton from "./TodosTableButton";
 import TodosTableCheckbox from "./TodosTableCheckbox";
@@ -54,10 +54,16 @@ const TodosTable = () => {
     dispatch(todosCreator.startFetching());
     setTimeout(() => {
       dispatch(todosCreator.listTodos());
-    }, 3000)
+    }, 2000);
   }, [dispatch]);
 
-  return todos.length > 0 ? <Table columns={columns} dataSource={todos} rowKey="id" pagination={paginationSettings} /> : <Empty />;
+  return isFetching ? (
+    <Spin size="large" tip="Loading..." />
+  ) : todos.length > 0 && !isFetching ? (
+    <Table columns={columns} dataSource={todos} rowKey="id" pagination={paginationSettings} />
+  ) : (
+    <Empty />
+  );
 };
 
 export default TodosTable;
