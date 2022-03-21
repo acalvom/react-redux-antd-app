@@ -6,7 +6,7 @@ const initState = {
 const todosReducer = (state = initState, action) => {
     switch (action.type) {
         case '@todos/list':
-            return { ...state, todos: action.payload };
+            return { ...state, todos: action.payload, isFetching: false };
 
         case '@todos/add':
             return { ...state, todos: [...state.todos, action.payload] };

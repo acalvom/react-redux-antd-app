@@ -9,6 +9,7 @@ import TodosTableCheckbox from "./TodosTableCheckbox";
 
 const TodosTable = () => {
   const todos = useSelector((state) => state.todosState.todos);
+  const isFetching = useSelector((state) => state.todosState.isFetching);
   const dispatch = useDispatch();
 
   const columns = [
@@ -50,7 +51,10 @@ const TodosTable = () => {
   };
 
   useEffect(() => {
-    dispatch(todosCreator.listTodos());
+    dispatch(todosCreator.startFetching());
+    setTimeout(() => {
+      dispatch(todosCreator.listTodos());
+    }, 3000)
   }, [dispatch]);
 
   return todos.length > 0 ? <Table columns={columns} dataSource={todos} rowKey="id" pagination={paginationSettings} /> : <Empty />;
