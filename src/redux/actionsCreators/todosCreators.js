@@ -43,3 +43,9 @@ export const toogleState = (todoId, todoIsDone) => {
         });
     }
 }
+
+export const startFetching = () => {
+    return {
+        type: '@todos/startFetching',
+    }
+}

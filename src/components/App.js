@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Layout>
         <Header className="app-header">REACT APP WITH REDUX</Header>
-        <Layout>
+        <Layout style={{ minHeight: "80vh" }}>
           <Sider className="app-sider">Sider</Sider>
           <Content className="app-content">
             <TodosHeader />
